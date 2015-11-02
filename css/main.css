@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'blenderpro';
+  src: url('../fonts/blenderpro/blenderpro-thin-webfont.woff') format('woff');
+  /* Pretty Modern Browsers */
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'proximanova';
+  src: url('../fonts/proximanova/ProximaNova-Reg-webfont.woff') format('woff');
+  /* Pretty Modern Browsers */
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'proximanova';
+  src: url('../fonts/proximanova/ProximaNova-Light-webfont.woff') format('woff');
+  /* Pretty Modern Browsers */
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'proximanova';
+  src: url('../fonts/proximanova/ProximaNova-Bold-webfont.woff') format('woff');
+  /* Pretty Modern Browsers */
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'courierprime';
+  src: url('../fonts/courierprime/courier-prime.ttf') format('woff');
+  /* Pretty Modern Browsers */
+  font-weight: 200; }
+
+body {
+  background: rgb(50,50,50);
+  margin: 0px;
+  font-family: 'proximanova';
+  font-weight: 300;
+  height: 100%;
+  min-height: 100% !important;}
+
+#content {
+  height: 100vh;
+  transition:1s all;
+}
+
+
+
+.show {
+  height: 100vh;
+  min-height: 100% !important;
+  background-color: rgb(0,0,0);
+}
+
+
+
+img {
+  transition: 0.6s top ease-in-out;
+  width: 100%;
+  position: relative;
+  display: block;
+  top: 0%;
+}
+
+.show img {
+  transition:0.6s top ease-in-out;
+  position: relative;
+  top: 10%;
+}
+
+.show #info {
+  display: none;
+}
+
+#name-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 15px;
+  color: rgba(255,255,255,0.4);
+}
+
+
+#number-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 15px ;
+  color: rgba(255,255,255,0.2);
+}
+
+
+
+
+
+.pill-container {
+  top: 1px;
+  background-color: rgba(255,255,255,0.3);
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.pill-value {
+  background-color: rgba(255,255,255,0.3);
+  height: 15px;
+  border-radius: 3px;
+}
+
+.row-label, .row-current, .row-total, .row-current-time, .row-total-time {
+  display: inline-block;
+}
+
+.row-label {
+  width: 60px;
+  text-align: right;
+}
+
+.row-current {
+  width: 30px;
+  margin-right: 5px;
+  text-align: right;
+}
+
+.row-total {
+  width: 40px;
+  margin-left: 5px;
+  text-align: left;
+}
+
+.scary {
+  display: none;
+}
+
+.scene-timing {
+  font-family: 'blenderpro';
+}
+
+.time {
+  font-family: 'blenderpro';
+}
+
+textarea {
+  margin: 10px;
+  font-family: 'proximanova';
+  font-weight: 300;
+  position: relative;
+  font-size: 14px;
+  background-color: rgba(0,0,0,0.0);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,1);
+  width: 300px;
+  height: 200px;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+textarea:focus {
+    outline: none !important;
+    border:1px solid rgba(255,255,255,0.4);
+}

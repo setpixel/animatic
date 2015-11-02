@@ -1,0 +1,16 @@
+{
+  "description": "An animatic player",
+  "main": "main.html",
+  "name": "Animatic",
+  "version": "0.0.1",
+  "window": {
+    "height": 600,
+    "width": 650,
+    "show": false,
+    "title": "Animatic",
+    "toolbar": false,
+    "icon": "icon.png",
+    "transparent": false,
+    "frame": true
+  }
+}
