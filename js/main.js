@@ -71,7 +71,15 @@ onload = function() {
     updateFrameNote($('#frame-notes').val());
   }, false);
 
+  setTimeout(unfocus, 100);
+  setTimeout(unfocus, 500);
+
 };
+
+var unfocus = function(){
+  if ("activeElement" in document)
+    document.activeElement.blur();
+}
 
 var updateGeneralNote = function(value) {
   notesData[currentPosition[0]][0] = value;
@@ -358,6 +366,12 @@ var updateInfo = function(){
   html.push('<div class="row"><div class="row-label">BOARD:</div><div class="row-current">' + currentBoard + '</div><div class="pill-container"><div class="pill-value" style="width: ' + Math.round(((currentBoard-1)/(totalBoards-1))*100) + '%;"></div></div><div class="row-total">' + totalBoards + '</div></div>');
 
   $('#number-info').html(html.join(''));
+
+  var html = [];
+  html.push( (currentPosition[0]+1) + '. ' +  sceneName + ' - ' + (currentPosition[1]+1));
+  $('#show-info').html(html.join(''));
+
+
 };
 
 var recordScene = function() {
@@ -484,7 +498,7 @@ window.onkeydown = function(key){
     case 37:
       clearTimeout(frameTimer);
       playbackMode = false;
-      if (key.metaKey) {
+      if (key.metaKey || key.ctrlKey) {
         advanceScene(-1);
       } else {
         advanceFrame(-1);
@@ -494,7 +508,7 @@ window.onkeydown = function(key){
     case 39:
       clearTimeout(frameTimer);
       playbackMode = false;
-      if (key.metaKey) {
+      if (key.metaKey || key.ctrlKey) {
         advanceScene(1);
       } else {
         advanceFrame(1);
@@ -502,7 +516,7 @@ window.onkeydown = function(key){
       break;
     // r key
     case 82:
-      if (key.metaKey){
+      if (key.metaKey || key.ctrlKey){
         recordScene();
       }
       break;
@@ -563,3 +577,31 @@ function msToTime(s) {
     return mins + ':' + addZ(secs); //+ '.' + ms.toString().substring(0,1);
   }
 };
+
+var extractDirectories = function() {
+  var imagePath = "/Users/setpixel/Dropbox/extractedframes"
+
+  var dirList = fs.readdirSync(imagePath).filter(function(file){
+    return ['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.gif'].indexOf(path.extname(file)) > -1
+  });
+
+  for (var i = 0; i < dirList.length; i++) {
+    console.log(dirList[i].substring(0, dirList[i].length - 8));
+    
+    var newImagePath = dirList[i].substring(0, dirList[i].length - 8)
+
+    try {
+      // the synchronous code that we want to catch thrown errors on
+      fs.mkdirSync(imagePath + "/" + newImagePath);
+    } catch (err) {
+    }
+
+    fs.rename(imagePath + "/" + dirList[i], imagePath + "/" + newImagePath + "/" + dirList[i])
+  }
+
+  console.log(dirList)
+
+};
+
+
+
